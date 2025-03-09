@@ -1,6 +1,6 @@
-# NickBot
+# NikBot
 
-NickBot is a conversational bot that simulates a business advisor named "Nick." It uses OpenAI's GPT API, and Embedding to store and generate responses and maintains a persistent conversation history in a `chat.json` file.
+NikBot is a conversational bot that simulates a business advisor named "Nik." It uses OpenAI's GPT API, and Embedding to store and generate responses and maintains a persistent conversation history in a `chat.json` file.
 
 ## Features
 
