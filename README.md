@@ -19,10 +19,10 @@ NikBot is a conversational bot that simulates a business advisor named "Nik." It
 - A Discord bot token
 - Required Python packages (see below)
 
-### 1. Clone the Repository
 
 ```bash
 git clone <repository-url>
 cd NickBot
-nano .env file and write your BOT_TOKEN and OPENAI_TOKEN 
+nano .env file and write your BOT_TOKEN, OPENAI_TOKEN, and WEAVIATE_TOKEN 
+pip install -r requirements.txt
 python bot.py
