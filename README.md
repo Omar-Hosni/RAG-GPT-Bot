@@ -1,6 +1,6 @@
-# NikBot
+# NickBot
 
-NikBot is a conversational bot that simulates a business advisor named "Nik." It uses OpenAI's GPT API, and Embedding to store and generate responses and maintains a persistent conversation history in a `chat.json` file.
+NickBot is a conversational bot that simulates a business advisor named "Nick." It uses OpenAI's GPT API, and Embedding to store and generate responses and maintains a persistent conversation history in a `chat.json` file.
 
 ## Features
 
@@ -19,10 +19,14 @@ NikBot is a conversational bot that simulates a business advisor named "Nik." It
 - A Discord bot token
 - Required Python packages (see below)
 
+### 1. Clone the Repository
 
 ```bash
 git clone <repository-url>
 cd NickBot
-nano .env file and write your BOT_TOKEN, OPENAI_TOKEN, and WEAVIATE_TOKEN 
-pip install -r requirements.txt
+<<<<<<< HEAD
+nano .env file and write your BOT_TOKEN and OPENAI_TOKEN 
 python bot.py
+=======
+python/python3 bot.py
+>>>>>>> 6cae2c1c5646f04b8b95dd9677bac5c6450ed844
