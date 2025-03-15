@@ -17,8 +17,6 @@ from util import (
     introduce_typos, detect_emotion
 )
 
-app = FastAPI()
-
 # Load bot token
 load_dotenv()
 TOKEN: Final[str] = os.getenv('BOT_TOKEN')
@@ -228,40 +226,22 @@ async def handle_video_learning_request(message: Message, user_message: str) -> 
         await message.channel.send("❌ Invalid YouTube link.")
 
 
-##################### FASTAPI ENDPOINTS #####################
-
-@app.get("/")
-async def read_root():
-    return {"message": "Discord bot is running!"}
-
-
-@app.get("/status")
-async def get_status():
-    return {"status": "Bot is online"}
-
 
 ##################### MAIN EVENT LOOP #####################
 
-def run_bot() -> None:
-    while True:
-        try:
-            client.run(TOKEN)
-        except discord.errors.ConnectionClosed as e:
-            print(f"❌ WebSocket closed, reconnecting in 5 seconds: {e}")
-            time.sleep(5)
-        except Exception as e:
-            print(f"❌ Unexpected error: {e}")
-            break
-
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(run_bot())
-
+async def run_bot():
+    """Runs the Discord bot in an async event loop."""
+    try:
+        await client.start(TOKEN)  # Use start() instead of run() for async compatibility
+        print("bot is running...")
+    except discord.errors.ConnectionClosed as e:
+        print(f"❌ WebSocket closed, reconnecting in 5 seconds: {e}")
+        asyncio.sleep(5)
+        await run_bot()
+    except Exception as e:
+        print(f"❌ Unexpected error: {e}")
 
 if __name__ == "__main__":
-    uvicorn.run("bot:app", host="0.0.0.0", port=8000, reload=True)
-
-
-# Run bot
-# if __name__ == '__main__':
-#     run_bot()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(run_bot())
+    
