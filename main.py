@@ -242,6 +242,4 @@ async def run_bot():
         print(f"❌ Unexpected error: {e}")
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(run_bot())
-    
+    run_bot()    
