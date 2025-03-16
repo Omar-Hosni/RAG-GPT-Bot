@@ -7,7 +7,7 @@ from db import generate_embedding
 load_dotenv()
 
 OPENAI_TOKEN = os.getenv("OPENAI_TOKEN")
-WEAVIATE_API_KEY = os.getenv("WEAVIATE_API_KEY")
+WEAVIATE_API_KEY = os.getenv("WEAVIATE_API_KEY", "9d79LJClrd6A8r8OWzlrAwYTvxyviHdnRyz0")
 
 # Connect to Weaviate Cloud Instance
 client = weaviate.Client(

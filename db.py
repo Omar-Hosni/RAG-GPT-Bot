@@ -12,7 +12,7 @@ import asyncio
 load_dotenv()
 
 OPENAI_TOKEN = os.getenv("OPENAI_TOKEN")
-WEAVIATE_API_KEY = os.getenv("WEAVIATE_API_KEY")
+WEAVIATE_API_KEY = os.getenv("WEAVIATE_API_KEY", "9d79LJClrd6A8r8OWzlrAwYTvxyviHdnRyz0")
 
 openai.api_key = OPENAI_TOKEN
 
