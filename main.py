@@ -14,7 +14,7 @@ from db import store_conversation_entry, find_most_similar_entry
 from util import (
     is_travel_related, is_greeting, greetings,
     is_business_or_social_media_related, is_worth_learning,
-    introduce_typos, detect_emotion
+    introduce_typos, detect_emotion, humanize_text
 )
 
 # Load bot token
@@ -120,7 +120,8 @@ async def send_message(message: Message, user_message: str, username: str) -> No
 
         update_session(str(message.author.id), "assistant", response)
         
-        response_with_typo = introduce_typos(response)
+        humanized_response = humanize_text(response)
+        response_with_typo = introduce_typos(humanized_response)
         # Send response (Private or Public)
         if is_private:
             await asyncio.sleep(10)

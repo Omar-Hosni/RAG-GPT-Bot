@@ -145,7 +145,7 @@ def has_majority_common_words(str1: str, str2: str, threshold: float = 60.0) -> 
     return overlap_percentage > threshold
 
 
-def introduce_typos(text, typo_percentage=0.1):
+def introduce_typos(text, typo_percentage=0.02):
     words = text.split()
     num_typos = max(1, int(len(words) * typo_percentage))  # At least one typo if the text is very short
     
@@ -167,3 +167,20 @@ def introduce_typos(text, typo_percentage=0.1):
                 words[index] = word[:pos] + word[pos + 1:]
     
     return ' '.join(words)
+
+def humanize_text(text):
+    prompt = f"""
+        {text}
+    humanize this and make it sound normal-like and very short, no need to use numerical or bullet points
+    """
+    try:
+        response = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=400
+            )
+
+        return response['choices'][0]['message']['content'].strip().lower()
+    except Exception as e:
+        print(f"⚠️ Error in learning evaluation: {e}")
+        return False  
